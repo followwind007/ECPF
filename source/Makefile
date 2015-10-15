@@ -1,7 +1,20 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-all: Conn CSize
-.PHONY: all
+OBJS = Conn.o CSize.o
+
+LIBS =
+
+TARGET = Conn CSize
+
+Conn: Conn.o
+	$(CXX) -o Conn Conn.o
+
+CSize: CSize.o
+	$(CXX) -o CSize CSize.o
+
+all: $(TARGET)
 
 clean:
-	  rm -f Conn.o CSize.o Conn CSize
+	rm -f $(OBJS) $(TARGET)
+
+
